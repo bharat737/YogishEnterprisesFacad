@@ -1,5 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+.before-after-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  position: relative;
+}
+
+.ba-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: ew-resize;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.ba-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+.ba-before {
+  z-index: 1;
+}
+
+.ba-after {
+  z-index: 2;
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path 0.1s ease;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 3;
+  transform: translateX(-1.5px);
+  box-shadow: 0 0 5px #000;
+}
+</style>
 
 <head>
     <meta charset="utf-8">
@@ -154,6 +201,14 @@
         </div>
     </div>
 
+    <div class="before-after-container">
+    <div class="ba-wrapper">
+        <img src="img/AcpSheetDetails/afterAcpImage.jpeg" alt="Before" class="ba-img ba-before">
+        <img src="img/AcpSheetDetails/beforeAcpImage.jpeg" alt="After" class="ba-img ba-after">
+        <div class="slider" id="slider"></div>
+    </div>
+    </div>
+
 
     <div class="container-xxl py-5">
         <div class="container">
@@ -248,6 +303,21 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.querySelector('.ba-wrapper');
+  const afterImg = document.querySelector('.ba-after');
+  const slider = document.getElementById('slider');
+
+  wrapper.addEventListener('mousemove', (e) => {
+    const bounds = wrapper.getBoundingClientRect();
+    const x = e.clientX - bounds.left;
+    const percent = Math.max(0, Math.min(100, (x / bounds.width) * 100));
+    afterImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+    slider.style.left = `${percent}%`;
+  });
+});
+</script>
 </body>
 
 </html>
