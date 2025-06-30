@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+   <style>
+      .before-after-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      position: relative;
+      }
+      .ba-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      cursor: ew-resize;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      }
+      .ba-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      }
+      .ba-before {
+      z-index: 1;
+      }
+      .ba-after {
+      z-index: 2;
+      clip-path: inset(0 50% 0 0);
+      transition: clip-path 0.1s ease;
+      }
+      .slider {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background-color: #ffffff;
+      z-index: 3;
+      transform: translateX(-1.5px);
+      box-shadow: 0 0 5px #000;
+      }
+   </style>
+   <head>
+      <meta charset="utf-8">
+      <title>Yogish Enterprises</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta content="" name="keywords">
+      <meta content="" name="description">
+      <!-- Favicon -->
+      <link href="img/favicon.ico" rel="icon">
+      <!-- Google Web Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Teko:wght@400;500;600&display=swap" rel="stylesheet">
+      <!-- Icon Font Stylesheet -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+      <!-- Libraries Stylesheet -->
+      <link href="lib/animate/animate.min.css" rel="stylesheet">
+      <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+      <!-- Customized Bootstrap Stylesheet -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <!-- Template Stylesheet -->
+      <link href="css/style.css" rel="stylesheet">
+   </head>
+   <body>
+      <!-- Spinner Start -->
+      <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+         <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
+         <img class="position-absolute top-50 start-50 translate-middle" src="img/icons/icon-1.png" alt="Icon">
+      </div>
+      <!-- Spinner End -->
+      <!-- Topbar Start -->
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+         <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="text-primary m-0"><img class="me-3" src="img/icons/icon-1.png" alt="Icon">Yogish Enterprises</h1>
+         </a>
+         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+               <a href="index.html" class="nav-item nav-link">Home</a>
+               <a href="about.html" class="nav-item nav-link">About</a>
+               <a href="service.html" class="nav-item nav-link">Services</a>
+               <!-- <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                  <div class="dropdown-menu border-0 m-0">
+                      <a href="feature.html" class="dropdown-item active">Our Features</a>
+                      <a href="project.html" class="dropdown-item">Our Projects</a>
+                      <a href="team.html" class="dropdown-item">Team Members</a>
+                      <a href="appointment.html" class="dropdown-item">Appointment</a>
+                      <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                      <a href="404.html" class="dropdown-item">404 Page</a>
+                  </div>
+                  </div> -->
+               <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Appointment</a>
+         </div>
+      </nav>
+      <!-- Navbar End -->
+      <!-- Page Header Start -->
+      <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+         <div class="container py-5">
+            <h1 class="display-1 text-white animated slideInDown">Services</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+               <ol class="breadcrumb text-uppercase mb-0">
+                  <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a class="text-white" href="service.html">Services</a></li>
+                  <li class="breadcrumb-item text-primary active" aria-current="page">Sheet Details</li>
+               </ol>
+            </nav>
+         </div>
+      </div>
+      <!-- Page Header End -->
+      <!-- Tab Navigation -->
+      <div class="container text-center mb-5">
+         <!-- Tab Navigation -->
+         <ul class="nav nav-pills justify-content-center" id="claddingTab" role="tablist">
+            <li class="nav-item">
+               <button class="nav-link" id="aluminium-tab" data-bs-toggle="pill" data-bs-target="#aluminium" type="button" role="tab">Aluminium Vertical Fins</button>
+            </li>
+            <li class="nav-item">
+               <button class="nav-link" id="aluminiumLouvers-tab" data-bs-toggle="pill" data-bs-target="#aluminiumLouvers" type="button" role="tab">Aluminium Louvers</button>
+            </li>
+
+             <li class="nav-item">
+               <button class="nav-link" id="sunLouvers-tab" data-bs-toggle="pill" data-bs-target="#sunLouvers" type="button" role="tab">Sun Louvers</button>
+            </li>
+         </ul>
+      </div>
+      <!-- Feature Start -->
+     
+      <div class="tab-content container-xxl py-5" id="claddingTabContent">
+     
+         <!-- Aluminium Vertical Fins Start -->
+         <!-- Aluminium Vertical Fins Tab Content -->
+         <div class="tab-pane fade" id="aluminium" role="tabpanel">
+            <!-- Aluminium Vertical Fins Text and Features -->
+            <div class="container-xxl py-5">
+               <div class="container">
+                  <div class="row g-5">
+                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="display-5 mb-4">Aluminium Vertical Fins</h1>
+                        <p class="mb-4">
+                           Aluminium Vertical Fins offer a sleek and modern architectural element that enhances both the visual appeal and functional performance of a building. These vertically oriented profiles serve as shading devices, privacy screens, and design accents, allowing architects to add texture and rhythm to façades.
+                        </p>
+                        <p>At Yogisha Enterprises, we design and fabricate custom aluminium fins in various sizes, shapes, and finishes to suit the architectural intent. These systems not only improve aesthetics but also reduce solar heat gain and glare, contributing to energy efficiency.</p>
+                        <div class="mb-4">
+                           <a href="files/Aluminium_Sheet_Brochure.pdf" class="btn btn-primary" download>
+                           <i class="fas fa-download me-2"></i>Download Aluminium Vertical Fins Brochure
+                           </a>
+                        </div>
+                        <div class="row g-4">
+                           <h1>Key Features : </h1>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-2.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Customizable in height, depth, color, and spacing</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-3.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Excellent resistance to weather and corrosion</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Lightweight and low-maintenance</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Ideal for both exterior and interior applications</h3>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="feature-img">
+                           <img class="img-fluid" src="img/aluminium-1.jpg" alt="Aluminium Sheet">
+                           <img class="img-fluid" src="img/aluminium-2.jpg" alt="Aluminium Panel">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Before/After Slider -->
+            <div class="before-after-container">
+               <div class="ba-wrapper" id="ba-wrapper-aluminium">
+                  <img src="img/AcpSheetDetails/afterAcpImage.jpeg" alt="Before" class="ba-img ba-before">
+                  <img src="img/AcpSheetDetails/beforeAcpImage.jpeg" alt="After" class="ba-img ba-after">
+                  <div class="slider" id="slider-aluminium"></div>
+               </div>
+            </div>
+         </div>
+         <!-- Aluminium Vertical Fins End -->
+
+          <!-- FRP Sheet Cladding (Fiber Reinforced Plastic) start -->
+        <div class="tab-pane fade" id="aluminiumLouvers" role="tabpanel">
+            <!-- Aluminium Louvers Text and Features -->
+            <div class="container-xxl py-5">
+               <div class="container">
+                  <div class="row g-5">
+                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="display-5 mb-4">Aluminium Louvers</h1>
+                        <p class="mb-4">Aluminium Louvers are engineered systems that provide effective ventilation, sun control, and weather protection while enhancing the building's exterior design. Commonly used in commercial and industrial projects, louvers allow airflow while preventing the entry of rain, debris, or direct sunlight.</p>
+                        <p>At Yogisha Enterprises, our aluminium louver systems are precision-fabricated to meet project-specific performance and aesthetic goals. Whether fixed or operable, our solutions combine durability, performance, and modern design.</p>
+                        <div class="mb-4">
+                           <a href="files/ACP_Brochure.pdf" class="btn btn-primary" download>
+                           <i class="fas fa-download me-2"></i>Download Aluminium Louvers Brochure
+                           </a>
+                        </div>
+                        <div class="row g-4">
+                           <h1>Key Features : </h1>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-2.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Horizontal or vertical configurations</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-3.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>High airflow with effective weather resistance</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Powder-coated or anodized finishes</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Used for facades, equipment screening, and HVAC enclosures</h3>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="feature-img">
+                           <img class="img-fluid" src="img/about-2.jpg" alt="">
+                           <img class="img-fluid" src="img/about-1.jpg" alt="">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Before/After Slider -->
+            <div class="before-after-container">
+               <div class="ba-wrapper" id="ba-wrapper-aluminiumLouvers">
+                  <img src="img/AcpSheetDetails/afterAcpImage.jpeg" alt="Before" class="ba-img ba-before">
+                  <img src="img/AcpSheetDetails/beforeAcpImage.jpeg" alt="After" class="ba-img ba-after">
+                  <div class="slider" id="slider-aluminiumLouvers"></div>
+               </div>
+            </div>
+         </div>
+         <!-- Aluminium Louvers End -->
+
+
+         <!-- Sun Louvers start -->
+        <div class="tab-pane fade" id="sunLouvers" role="tabpanel">
+            <!-- Sun Louvers Text and Features -->
+            <div class="container-xxl py-5">
+               <div class="container">
+                  <div class="row g-5">
+                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="display-5 mb-4">Sun Louvers</h1>
+                        <p class="mb-4">Sun Louvers, also known as sun breakers or brise soleil, are horizontal or angled aluminium profiles designed to provide solar shading and reduce the energy load on the building. These architectural features block excessive sunlight, minimizing internal heat gain while allowing natural daylight.</p>
+                        <p>Yogisha Enterprises provides tailored sun louver systems that not only improve thermal comfort but also enhance the architectural character of the building. Our systems are engineered to optimize sun path orientation, offering sustainability with style.</p>
+                        <div class="mb-4">
+                           <a href="files/ACP_Brochure.pdf" class="btn btn-primary" download>
+                           <i class="fas fa-download me-2"></i>Download Sun Louvers Brochure
+                           </a>
+                        </div>
+                        <div class="row g-4">
+                           <h1>Key Features : </h1>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-2.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Fixed or adjustable blades for dynamic shading</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-3.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Enhances energy efficiency and indoor comfort</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Suitable for façades, windows, and rooftop pergolas</h3>
+                              </div>
+                           </div>
+                           <div class="col-12 d-flex align-items-start">
+                              <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">
+                              <div class="ms-4">
+                                 <h3>Designed for long-term performance in harsh climates</h3>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="feature-img">
+                           <img class="img-fluid" src="img/about-2.jpg" alt="">
+                           <img class="img-fluid" src="img/about-1.jpg" alt="">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Before/After Slider -->
+            <div class="before-after-container">
+               <div class="ba-wrapper" id="ba-wrapper-sunLouvers">
+                  <img src="img/AcpSheetDetails/afterAcpImage.jpeg" alt="Before" class="ba-img ba-before">
+                  <img src="img/AcpSheetDetails/beforeAcpImage.jpeg" alt="After" class="ba-img ba-after">
+                  <div class="slider" id="slider-sunLouvers"></div>
+               </div>
+            </div>
+         </div>
+         <!-- Sun Louvers End -->
+
+      </div>
+      
+      <!-- Footer Start -->
+      <div class="container-fluid bg-dark text-body footer mt-5 pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
+         <div class="container py-5">
+            <div class="row g-5">
+               <div class="col-lg-3 col-md-6">
+                  <h3 class="text-light mb-4">Address</h3>
+                  <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</p>
+                  <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
+                  <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p>
+                  <div class="d-flex pt-2">
+                     <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
+                     <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                     <a class="btn btn-square btn-outline-body me-1" href=""><i class="fab fa-youtube"></i></a>
+                     <a class="btn btn-square btn-outline-body me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6">
+                  <h3 class="text-light mb-4">Services</h3>
+                  <a class="btn btn-link" href="">Architecture</a>
+                  <a class="btn btn-link" href="">3D Animation</a>
+                  <a class="btn btn-link" href="">House Planning</a>
+                  <a class="btn btn-link" href="">Interior Design</a>
+                  <a class="btn btn-link" href="">Construction</a>
+               </div>
+               <div class="col-lg-3 col-md-6">
+                  <h3 class="text-light mb-4">Quick Links</h3>
+                  <a class="btn btn-link" href="">About Us</a>
+                  <a class="btn btn-link" href="">Contact Us</a>
+                  <a class="btn btn-link" href="">Our Services</a>
+                  <a class="btn btn-link" href="">Terms & Condition</a>
+                  <a class="btn btn-link" href="">Support</a>
+               </div>
+               <div class="col-lg-3 col-md-6">
+                  <h3 class="text-light mb-4">Newsletter</h3>
+                  <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                  <div class="position-relative mx-auto" style="max-width: 400px;">
+                     <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                     <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid copyright">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                     &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                  </div>
+                  <div class="col-md-6 text-center text-md-end">
+                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                     Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Footer End -->
+      <!-- Back to Top -->
+      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="lib/wow/wow.min.js"></script>
+      <script src="lib/easing/easing.min.js"></script>
+      <script src="lib/waypoints/waypoints.min.js"></script>
+      <script src="lib/counterup/counterup.min.js"></script>
+      <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+      <script src="lib/tempusdominus/js/moment.min.js"></script>
+      <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+      <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+      <!-- Template Javascript -->
+      <script src="js/main.js"></script>
+      <script>
+          function initBeforeAfter(wrapperId, sliderId) {
+            const wrapper = document.getElementById(wrapperId);
+            const afterImg = wrapper.querySelector('.ba-after');
+            const slider = document.getElementById(sliderId);
+
+            wrapper.addEventListener('mousemove', (e) => {
+            const bounds = wrapper.getBoundingClientRect();
+            const x = e.clientX - bounds.left;
+            const percent = Math.max(0, Math.min(100, (x / bounds.width) * 100));
+            afterImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+            slider.style.left = `${percent}%`;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initBeforeAfter('ba-wrapper-aluminium', 'slider-aluminium');
+            initBeforeAfter('ba-wrapper-aluminiumLouvers', 'slider-aluminiumLouvers');
+            initBeforeAfter('ba-wrapper-sunLouvers', 'slider-sunLouvers');
+        });
+      </script>
+   </body>
+</html>
