@@ -554,17 +554,29 @@
       <script>
           function initBeforeAfter(wrapperId, sliderId) {
             const wrapper = document.getElementById(wrapperId);
-            const afterImg = wrapper.querySelector('.ba-after');
-            const slider = document.getElementById(sliderId);
+         const afterImg = wrapper?.querySelector('.ba-after');
+         const slider = document.getElementById(sliderId);
 
-            wrapper.addEventListener('mousemove', (e) => {
+         if (!wrapper || !afterImg || !slider) return;
+
+         function updateSlider(x) {
             const bounds = wrapper.getBoundingClientRect();
-            const x = e.clientX - bounds.left;
-            const percent = Math.max(0, Math.min(100, (x / bounds.width) * 100));
+            const offsetX = x - bounds.left;
+            const percent = Math.max(0, Math.min(100, (offsetX / bounds.width) * 100));
             afterImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
             slider.style.left = `${percent}%`;
-            });
-        }
+         }
+
+         // Mouse (desktop)
+         wrapper.addEventListener('mousemove', (e) => updateSlider(e.clientX));
+
+         // Touch (mobile)
+         wrapper.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+               updateSlider(e.touches[0].clientX);
+            }
+         });
+         }
 
         document.addEventListener('DOMContentLoaded', () => {
             initBeforeAfter('ba-wrapper-spiderGlazing', 'slider-spiderGlazing');
